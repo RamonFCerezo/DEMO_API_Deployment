@@ -59,6 +59,7 @@ def new_data():
 @app.route('/v2/retrain', methods=['POST', 'GET'])
 
 def retrain():
+    request.method = 'POST'
     if request.method == 'POST':
         model = pickle.load(open('advertising_model','rb'))
         connection = sqlite3.connect("vent.db")
