@@ -33,7 +33,7 @@ def predict():
 
 # 2. Un endpoint para almacenar nuevos registros en la base de datos que deberá estar previamente creada.
 
-@app.route('/v1/ingest_data', methods=['POST'])
+@app.route('/v1/ingest_data', methods=['GET, POST'])
 def new_data():
     if 'tv' in request.args and 'radio' in request.args and 'newspaper' in request.args and 'sales' in request.args:
         connection = sqlite3.connect('vent.db')
@@ -55,7 +55,7 @@ def new_data():
 
 # 3. Posibilidad de reentrenar de nuevo el modelo con los posibles nuevos registros que se recojan.
 
-@app.route('/v2/retrain', methods=['POST'])
+@app.route('/v2/retrain', methods=['GET, POST'])
 
 def retrain():
     model = pickle.load(open('advertising_model','rb'))
