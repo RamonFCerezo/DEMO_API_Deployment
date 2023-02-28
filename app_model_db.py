@@ -35,6 +35,7 @@ def predict():
 
 @app.route('/v1/ingest_data', methods=['POST', 'GET'])
 def new_data():
+    request.method = 'POST'
     if request.method == 'POST' and 'tv' in request.args and 'radio' in request.args and 'newspaper' in request.args and 'sales' in request.args:
         connection = sqlite3.connect('vent.db')
         crsr = connection.cursor()
