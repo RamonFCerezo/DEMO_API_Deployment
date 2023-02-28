@@ -35,7 +35,7 @@ def predict():
 
 @app.route('/v1/ingest_data', methods=['POST', 'GET'])
 def new_data():
-    if request.method == 'POST'and 'tv' in request.args and 'radio' in request.args and 'newspaper' in request.args and 'sales' in request.args:
+    if request.method == 'POST' and 'tv' in request.args and 'radio' in request.args and 'newspaper' in request.args and 'sales' in request.args:
         connection = sqlite3.connect('vent.db')
         crsr = connection.cursor()
         radio = float(request.args['radio'])
@@ -51,7 +51,7 @@ def new_data():
         connection.close()
         return jsonify(result2)
     else:
-        return "Nothing new added to the database"
+        return "Nothing new added to the database" + request.method
 
 # 3. Posibilidad de reentrenar de nuevo el modelo con los posibles nuevos registros que se recojan.
 
