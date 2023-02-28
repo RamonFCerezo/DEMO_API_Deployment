@@ -74,4 +74,4 @@ def retrain():
     connection.close()
     return "<b>Model updated with new data<b>"
 
-app.run()
+# app.run()
