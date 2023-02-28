@@ -49,7 +49,7 @@ def new_data():
         result2 = crsr.execute(response).fetchall()
         connection.commit()
         connection.close()
-        return result2
+        return jsonify(result2)
     else:
         return "Nothing new added to the database"
 
