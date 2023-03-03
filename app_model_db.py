@@ -16,7 +16,7 @@ def hello():
     return "Bienvenido a mi API del modelo advertising"
 
 # 1. Endpoint que devuelva la predicción de los nuevos datos enviados mediante argumentos en la llamada
-@app.route('/v1/predict', methods=['GET'])
+@app.route('/v2/predict', methods=['GET'])
 def predict():
     model = pickle.load(open('advertising_model','rb'))
 
@@ -33,7 +33,7 @@ def predict():
 
 # 2. Un endpoint para almacenar nuevos registros en la base de datos que deberá estar previamente creada.
 
-@app.route('/v1/ingest_data', methods=['POST', 'GET'])
+@app.route('/v2/ingest_data', methods=['POST', 'GET'])
 def new_data():
     request.method = 'POST'
     if request.method == 'POST' and 'tv' in request.args and 'radio' in request.args and 'newspaper' in request.args and 'sales' in request.args:
